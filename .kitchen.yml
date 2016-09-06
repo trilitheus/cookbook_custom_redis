@@ -1,0 +1,24 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  client_rb:
+    environment: kitchen
+
+verifier:
+  name: inspec
+  format: doc
+
+platforms:
+  - name: centos-7.2
+    driver:
+      box: packer_centos7_virtualbox
+      box_url: ~/packer_vbox_builds/packer_centos7_virtualbox.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[custom_redis::default]
+    attributes:
