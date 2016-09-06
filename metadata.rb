@@ -1,0 +1,10 @@
+name 'custom_redis'
+maintainer 'Trilitheus'
+maintainer_email 'trilitheus@gmail.com'
+license 'all_rights'
+description 'Installs/Configures redis'
+long_description 'Installs/Configures redis'
+version '0.1.0'
+
+depends 'redisio', '~> 2.4.0'
+depends 'monit-ng', '~> 2.3.0'
