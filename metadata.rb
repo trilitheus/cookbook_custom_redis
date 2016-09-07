@@ -6,5 +6,6 @@ description 'Installs/Configures redis'
 long_description 'Installs/Configures redis'
 version '0.1.0'
 
-depends 'redisio', '~> 2.4.0'
 depends 'monit-ng', '~> 2.3.0'
+depends 'redisio', '~> 2.4.0'
+depends 'yum-epel', '~> 0.7.0'
