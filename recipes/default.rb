@@ -7,6 +7,10 @@ sysctl_param 'vm.overcommit_memory' do
   value 1
 end
 
+sysctl_param 'net.core.somaxconn' do
+  value 511
+end
+
 monit_check 'redis' do
   check_type 'process'
   id_type 'matching'
