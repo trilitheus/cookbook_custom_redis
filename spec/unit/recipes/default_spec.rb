@@ -44,5 +44,17 @@ describe 'custom_redis::default' do
     it 'sets vm.overcommit_memory to 1' do
       expect(chef_run).to apply_sysctl_param('vm.overcommit_memory').with_value('1')
     end
+
+    it 'deletes the default redis.conf' do
+      expect(chef_run).to delete_file('/etc/redis.conf')
+    end
+
+    it 'links the custom redis conf to the default location' do
+      expect(chef_run).to create_link('/etc/redis.conf').with(to: '/etc/redis/6379.conf')
+    end
+
+    it 'adds monit check for redis' do
+      expect(chef_run).to create_monit_check('redis')
+    end
   end
 end
