@@ -3,16 +3,9 @@ include_recipe 'redisio::default'
 include_recipe 'monit-ng::default'
 include_recipe 'sysctl::default'
 
-sysctl_param 'vm.overcommit_memory' do
-  value 1
-end
-
-%w(
-  net.core.somaxconn
-  net.ipv4.tcp_max_syn_backlog
-).each do |kern|
-  sysctl_param kern do
-    value 511
+node['custom_redis']['sysctl'].each do |k, v|
+  sysctl_param k do
+    value v
   end
 end
 
