@@ -8,8 +8,8 @@ sysctl_param 'vm.overcommit_memory' do
 end
 
 %w(
-net.core.somaxconn
-net.ipv4.tcp_max_syn_backlog 
+  net.core.somaxconn
+  net.ipv4.tcp_max_syn_backlog
 ).each do |kern|
   sysctl_param kern do
     value 511
